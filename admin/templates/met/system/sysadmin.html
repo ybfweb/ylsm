@@ -1,0 +1,149 @@
+<!--<?php
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+require_once template('head');
+echo <<<EOT
+-->
+<style type="text/css">
+.stsadmin_qyyy{ border:1px solid #dfdfdf; padding-bottom:0px!important;}
+.stsadmin_qyyy li{ float:left; padding:0px 15px; text-align:center;}
+.stsadmin_qyyy li img{ width:50px; height:50px;}
+.stsadmin_qyyy li a{ color:#666; text-decoration:none;}
+.stsadmin_qyyy li a p{ height:28px; line-height:28px;}
+</style>
+</head>
+<body>
+<!--
+EOT;
+require_once template('metlangs');
+	$style3="style=\"width:100%\"";
+	$style4="style=\"margin-left:8px\"";
+echo <<<EOT
+-->
+<div class="sysadmin">
+	<div class="sysadmin_box_1" $style1>
+		<div class="sysadmin_box_cont">	
+			<h3>{$lang_upfiletips30}</h3>
+			<div class="boxcont" style="padding:0px;">
+				<table cellpadding="0" cellspacing="1" class="stat_table">
+	<tr>
+		<td class="t" width="30">{$lang_statips35}</td>
+		<td class="t" width="20">PV</td>
+		<td class="t" width="60">{$lang_statips21}</td>
+		<td class="t" width="20">IP</td>
+		<td class="t" style="font-size:12px;">{$lang_statips22}</td>
+	</tr>
+	<tr class="mouse">
+		<td class="t">{$lang_statips10}</td>
+		<td>{$visit[pv]}</td>
+		<td>{$visit[alone]}</td>
+		<td>{$visit[ip]}</td>
+		<td>{$per_visit}</td>
+	</tr>
+	<tr class="mouse">
+		<td class="t">{$lang_statips11}</td>
+		<td>{$visit_summaryz[pv]}</td>
+		<td>{$visit_summaryz[alone]}</td>
+		<td>{$visit_summaryz[ip]}</td>
+		<td>{$visit_summaryz['per']}</td>
+	</tr>
+	<tr class="mouse">
+		<td class="t">{$lang_unitytxt_48}</td>
+		<td>{$visit_summaryq[pv]}</td>
+		<td>{$visit_summaryq[alone]}</td>
+		<td>{$visit_summaryq[ip]}</td>
+		<td>{$visit_summaryq['per']}</td>
+	</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="sysadmin_box_2" $style2>
+		<div class="sysadmin_box_cont">
+			<h3>{$lang_sysadminUnread}</h3>
+			<table cellpadding="0" cellspacing="1" class="stat_table">
+				<tr class="mouse">
+					<td class="t" width="60">{$lang_sysadminFeedbackInfo}</td>
+					<td><a href="../content/feedback/index.php?lang=$lang&class1={$met_classindex[8][0][id]}&anyid=29">$feedback</a></td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">{$lang_sysadminLeaveMessage}</td>
+					<td><a href="../content/message/index.php?lang=$lang&class1={$met_classindex[7][0][id]}&anyid=29">$message</a></td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">{$lang_sysadminFriendlyLink}</td>
+					<td><a href="../seo/link/index.php?lang=$lang&class1={$met_classindex[9][0][id]}&anyid=29">$link</a></td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">{$lang_sysadminMember}</td>
+					<td><a href="../member/index.php?lang=$lang&class1={$met_classindex[10][0][id]}&anyid=44">$member</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="sysadmin_box_8" $style3>
+		<div class="sysadmin_box_cont" $style4>
+		<h3>{$lang_upfiletips38}</h3>
+			<table cellpadding="0" cellspacing="1" class="stat_table">
+				<tr class="mouse">
+					<td class="t">{$lang_upfiletips39}</td>
+					<td colspan='2'>{$lang_metinfo}</td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">{$lang_metinfoversion}</td>
+					<td colspan='2'>{$metcms_v}{$new_metcms_v}</td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">{$lang_Operating}</td>
+					<td colspan='2'>{$xitong}</td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">PHP | Mysql</td>
+					<td>{$met_sever1}</td>
+					<td>{$mysql1}</td>
+				</tr>
+				<tr class="mouse">
+					<td class="t">{$lang_upfiletips42}</td>
+					<td colspan='2'>
+					<span id="oltest_cms" style="padding:0px; font-size:100%; color:#390;"><a id="updatenow" href="javascript:void(0)" onclick="return olupdate('cms','new','test');">{$lang_upfiletips43}</a></span>
+					<input id="sucess_cms" type="hidden" value="" />
+					<input id="addr_cms" type="hidden" value="" />
+					<input id="met_url_r" type="hidden" value="http://$met_host/dl/olupdate.php?" />
+					<input id="met_url_h" type="hidden" value="olupdate.php?type=1&" />
+					<input id="ver_now_cms" type="hidden" value="$metcms_v" />
+					<input id="ver_to_cms" type="hidden" value="new" />
+					<input id="date_back" type="hidden" value="0" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="footer">{$foot}</div>
+<script type="text/javascript">
+function metHeight(group){
+	tallest=0;
+	group.each(function(){
+		thisHeight=jQuery(this).height();
+		if(thisHeight>tallest){
+			tallest=thisHeight;
+		}
+	});
+	group.height(tallest);
+}
+$(document).ready(function(){
+	var group1 = $(".sysadmin_box_1 .stat_table,.sysadmin_box_2 .stat_table");
+	metHeight(group1);
+	ifreme_methei();
+});
+</script>
+</body>
+</html>
+<!--
+EOT;
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
+?>-->
